@@ -31,7 +31,7 @@ class User extends CI_Controller
 		$data['title'] = 'Sistem Magang DPRD';
 		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
 		$this->session->userdata('email')])->row_array();
-		
+
 		$data['konfirmasi'] = $this->session->userdata('acc');
 		$data['divisi'] = $this->User_Model->getDivisi();
 		// echo 'HALOO ' . $data['pendaftaran']['nama_peserta'];
@@ -80,6 +80,8 @@ class User extends CI_Controller
 		$data['title'] = 'Edit Profile';
 		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
 		$this->session->userdata('email')])->row_array();
+
+		$data['penyelia'] = $this->User_Model->getNamaPenyeliaById($data['nama']['divisi']);
 
 		$this->form_validation->set_rules('nama_peserta', 'Name', 'required|trim');
 		$this->form_validation->set_rules('alamat', 'Adress', 'required|trim');

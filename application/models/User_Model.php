@@ -11,6 +11,16 @@ class User_Model extends CI_Model
 		return $this->db->get('pendaftaran', 1);
 	}
 
+	public function getNamaPenyeliaById($id)
+	{
+		$this->db->select('nama_peserta');
+		$this->db->where('role_id', 2);
+		$this->db->where('divisi', $id);
+		$this->db->from('pendaftaran');
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 	public function insertKegiatan($data)
 	{
 		$this->db->insert('kegiatan', $data);
