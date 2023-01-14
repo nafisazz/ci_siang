@@ -65,8 +65,6 @@
 						?>
 
 
-
-
 						<!-- End of Main Content -->
 
 						<!-- data diri -->
@@ -110,15 +108,15 @@
 														<h6 class="mb-0" style="color: black;">Nomor Induk Siswa/Mahasiswa</h6>
 														<small class="text-muted"><?= $nama['nim'] ?></small>
 													</li>
-												<li class="list-group-item">
-													<h6 class="mb-0" style="color: black;">Email</h6>
-													<small class="text-muted"><?= $nama['email'] ?></small>
-												</li>
-												<li class="list-group-item">
-													<h6 class="mb-0" style="color: black;">Nomor Telepon</h6>
-													<small class="text-muted"><?= $nama['no_telp'] ?></small>
-												</li>
-											</ul>
+													<li class="list-group-item">
+														<h6 class="mb-0" style="color: black;">Email</h6>
+														<small class="text-muted"><?= $nama['email'] ?></small>
+													</li>
+													<li class="list-group-item">
+														<h6 class="mb-0" style="color: black;">Nomor Telepon</h6>
+														<small class="text-muted"><?= $nama['no_telp'] ?></small>
+													</li>
+												</ul>
 										</div>
 									</div>
 								</div>

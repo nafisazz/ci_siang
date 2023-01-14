@@ -38,10 +38,10 @@ class Admin extends CI_Controller
 
 	public function edit_riwayat($id)
 	{
-		$data = [
-
-			'acc' => $this->input->post('acc')
-		];
+		$data = array(
+			'acc' => $this->input->post('acc'),
+			'alasan' => $this->input->post('alasan')
+		);
 		$this->db->where('id', $id);
 		$this->db->update('pendaftaran', $data);
 		$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert">Data Pendaftaran Berhasil Di Edit</div>');
