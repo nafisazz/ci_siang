@@ -163,6 +163,8 @@
 				</div>
 			</div>
 
+
+
 			<!-- Bootstrap core JavaScript-->
 			<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
 			<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -173,6 +175,55 @@
 			<!-- Custom scripts for all pages-->
 			<script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
 
+
+			<script>
+				$(document).ready(function() {
+
+
+					$('#tgl_selesai').change(function() {
+
+						var mulai = $('#tgl_mulai').val();
+						var berakhir = $('#tgl_selesai').val();
+
+						var tahunMulai = mulai.substring(0, 4);
+						var bulanMulai = mulai.substring(5, 7);
+						var hariMulai = mulai.substring(8, 10);
+
+						var tahunBerakhir = berakhir.substring(0, 4);
+						var bulanBerakhir = berakhir.substring(5, 7);
+						var hariBerakhir = berakhir.substring(8, 10);
+
+						var tahunSekarang = new Date().getFullYear();
+
+
+
+						if (tahunBerakhir > tahunMulai) {
+							alert('Pilih tahun  yang valid!');
+							$('#btnSubmit').attr('disabled', true);
+						} else if (bulanBerakhir < bulanMulai) {
+							alert('Pilih bulan berakhir cuti yang valid!');
+							$('#btnSubmit').attr('disabled', true);
+						} else if (tahunBerakhir > tahunSekarang) {
+							alert('Pilih tahun  yang valid!');
+							$('#btnSubmit').attr('disabled', true);
+						} else if (hariBerakhir < hariMulai && tahunSekarang == tahunBerakhir) {
+							alert('Pilih tanggal yang valid!');
+							$('#alertError').modal('show');
+							$('#btnSubmit').attr('disabled', true);
+						} else if (tahunMulai > tahunSekarang) {
+							alert('Pilih tahun  yang valid!');
+							$('#btnSubmit').attr('disabled', true);
+						} else {
+							$('#btnSubmit').attr('disabled', false);
+						}
+
+
+					});
+
+				});
+			</script>
+			<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </body>
+
 
 </html>

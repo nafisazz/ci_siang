@@ -36,6 +36,19 @@ class Admin extends CI_Controller
 		$this->load->view('dashboard/template/footer');
 	}
 
+	public function daftarDevisi($divisi)
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['judul'] = $divisi;
+		$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['divisi'] = $this->pendaftaran->getDivisi($divisi);
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('admin/daftar_peserta', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+
 	public function edit_riwayat($id)
 	{
 		$data = array(

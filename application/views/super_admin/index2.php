@@ -11,7 +11,6 @@
 
 	<!-- Custom fonts for this template-->
 	<link href="<?= base_url('assets/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-	<link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
 	<!-- Custom styles for this template-->
@@ -25,7 +24,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<?php $this->load->view('dashboard/template/sidebar_penyelia') ?>
+		<?php $this->load->view('dashboard/template/sidebar_superadmin') ?>
 		<!-- end of sidebar -->
 
 		<!-- Content Wrapper -->
@@ -35,7 +34,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<?php $this->load->view('dashboard/template/topbar_user') ?>
+				<?php $this->load->view('dashboard/template/topbar_superadmin') ?>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -53,7 +52,7 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-12">
-									<table class="table table-bordered table-hover" id="tbl_penyelia">
+									<table class="table table-bordered table-hover">
 										<thead>
 											<tr>
 												<td>Nama</td>
@@ -185,7 +184,6 @@
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
-	<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
@@ -193,12 +191,6 @@
 
 	<!-- Custom scripts for all pages-->
 	<script src="<?= base_url('assets/'); ?>js/sb-admin-2.min.js"></script>
-
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('#tbl_penyelia').DataTable();
-		});
-	</script>
 
 </body>
 

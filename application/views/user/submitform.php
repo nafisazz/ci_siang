@@ -6,11 +6,11 @@
 		<form class="user" method="post" action="<?= base_url('user/submitform') ?>">
 			<div class="card-body ">
 				<p class="text">pilih tanggal mulai magang</p>
-				<input type="date" name="tgl_mulai" placeholder="" autocomplete="off" class="form-control w-50" value="<?= set_value('tgl_mulai'); ?>">
+				<input type="date" name="tgl_mulai" id="tgl_mulai" placeholder="" autocomplete="off" class="form-control w-50" value="<?= set_value('tgl_mulai'); ?>">
 			</div>
 			<div class="card-body">
 				<p class="text">pilih tanggal selesai magang</p>
-				<input type="date" name="tgl_selesai" placeholder="" autocomplete="off" class="form-control w-50" value="<?= set_value('tgl_selesai'); ?>">
+				<input type="date" name="tgl_selesai" id="tgl_selesai" placeholder="" autocomplete="off" class="form-control w-50" value="<?= set_value('tgl_selesai'); ?>">
 			</div>
 			<div class="card-body">
 				<p class="text">Pilih Divisi</p>
@@ -31,7 +31,7 @@
 			<br>
 			<hr>
 			<div class="card-body text-right">
-				<button type="submit" name="btn_simpan" value="simpan_nilai" class="btn btn-primary">Simpan</button>
+				<button type="submit" name="btn_simpan" id="btnSubmit" value="simpan_nilai" class="btn btn-primary">Simpan</button>
 				<!-- <a href="index.php" class="btn btn-danger">Kembali</a> -->
 			</div>
 

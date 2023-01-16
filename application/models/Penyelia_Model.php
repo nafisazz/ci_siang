@@ -34,6 +34,12 @@ class Penyelia_Model extends CI_Model
 		return $this->db->query($query)->result_array();
 	}
 
+	public function getAllPesertaByAcc2()
+	{
+		$query = "SELECT * from pendaftaran where role_id = 3 and acc = 'tidak_aktif' ";
+		return $this->db->query($query)->result_array();
+	}
+
 	public function getAllNilaiById($id)
 	{
 		$query = "SELECT * from nilai where id_peserta = '$id'  ";

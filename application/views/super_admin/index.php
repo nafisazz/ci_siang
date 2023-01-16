@@ -24,7 +24,7 @@
 	<div id="wrapper">
 
 		<!-- Sidebar -->
-		<?php $this->load->view('dashboard/template/sidebar_admin') ?>
+		<?php $this->load->view('dashboard/template/sidebar_superadmin') ?>
 		<!-- end of sidebar -->
 
 		<!-- Content Wrapper -->
@@ -34,7 +34,7 @@
 			<div id="content">
 
 				<!-- Topbar -->
-				<?php $this->load->view('dashboard/template/topbar_admin') ?>
+				<?php $this->load->view('dashboard/template/topbar_superadmin') ?>
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
@@ -53,7 +53,7 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-12">
-									<table class="table table-bordered table-hover" id="tableUser">
+									<table class="table table-bordered table-hover">
 										<thead>
 											<tr>
 												<td>Nama</td>
@@ -110,7 +110,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<form action="<?= base_url('admin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
+												<form action="<?= base_url('superadmin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
 													<p>Apakah anda yakin ingin mensetujui perizinan? Jika iya klik oke untuk melanjutkan</p>
 													<input type="hidden" name="acc" value="lolos">
 											</div>
@@ -184,7 +184,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<form action="<?= base_url('admin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
+												<form action="<?= base_url('superadmin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
 
 													<input type="hidden" name="acc" value="ditolak">
 													<div class="mb-3">

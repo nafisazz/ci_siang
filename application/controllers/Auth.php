@@ -65,6 +65,8 @@ class Auth extends CI_Controller
 					redirect('Admin');
 				} elseif ($this->session->userdata('role_id') == '2') {
 					redirect('Penyelia');
+				} elseif ($this->session->userdata('role_id') == '4') {
+					redirect('superadmin');
 				}
 			}
 		} else {

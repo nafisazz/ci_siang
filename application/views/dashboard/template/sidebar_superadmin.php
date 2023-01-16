@@ -6,7 +6,7 @@
       		<div class="sidebar-brand-icon rotate-n-15">
       			<i class="fas fa-user-headset"></i>
       		</div>
-      		<div class="sidebar-brand-text mx-3">ADMIN</div>
+      		<div class="sidebar-brand-text mx-3">Super Admin</div>
       	</a>
 
       	<!-- Divider -->
@@ -22,35 +22,44 @@
 
       	<!-- Nav Item - Dashboard -->
       	<li class="nav-item">
-      		<a class="nav-link" href="<?= base_url('admin/index') ?>">
+      		<a class="nav-link" href="<?= base_url('superadmin/index') ?>">
       			<i class="fas fa-fw fa-tachometer-alt"></i>
       			<span>Dashboard</span></a>
       	</li>
 
-      	<hr class="sidebar-divider d-none d-md-block">
-
-      	<li class="nav-item dropdown">
-      		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
-      			<i class="fas fa-fw fa-clipboard"></i>
-      			<span>Data Mahasiswa</span></a>
-      		<ul class="dropdown-menu">
-
-      			<li><a class="dropdown-item" href="<?= base_url('admin/daftarDevisi/1') ?>">Divisi Humas</a></li>
-      			<li><a class="dropdown-item" href="<?= base_url('admin/daftarDevisi/2') ?>">Divisi Tata Usaha</a></li>
-      			<li><a class="dropdown-item" href="<?= base_url('admin/daftarDevisi/3') ?>">Divisi Perlengkapan</a></li>
-      			<li><a class="dropdown-item" href="<?= base_url('admin/daftarDevisi/4') ?>">Divisi Rumah Tangga</a></li>
-      			<li><a class="dropdown-item" href="<?= base_url('admin/daftarDevisi/5') ?>">Divisi Persidangan</a></li>
-      		</ul>
-      	</li>
-
+      	<!-- <hr class="sidebar-divider d-none d-md-block"> -->
+      	<!-- Nav Item - Tables -->
+      	<!-- <li class="nav-item">
+    <a class="nav-link" href="<?= base_url('superadmin/daftar') ?>">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Data Pendaftar</span></a>
+</li> -->
       	<hr class="sidebar-divider d-none d-md-block">
       	<li class="nav-item">
-      		<a class="nav-link" href="<?= base_url('admin/laporan') ?>">
+      		<a class="nav-link" href="<?= base_url('superadmin/laporan') ?>">
       			<i class="fas fa-fw fa-clipboard"></i>
       			<span>Laporan</span></a>
-
       	</li>
 
+      	<hr class="sidebar-divider d-none d-md-block">
+      	<!-- Nav Item - Tables -->
+      	<li class="nav-item">
+      		<a class="nav-link" href="<?= base_url('superadmin/peserta') ?>">
+      			<i class="fas fa-fw fa-users"></i>
+      			<span>Data Peserta </span></a>
+      	</li>
+      	<hr class="sidebar-divider d-none d-md-block">
+      	<li class="nav-item">
+      		<a class="nav-link" href="<?= base_url('superadmin/laporan2') ?>">
+      			<i class="fas fa-fw fa-clipboard"></i>
+      			<span>Laporan</span></a>
+      	</li>
+      	<hr class="sidebar-divider d-none d-md-block">
+      	<li class="nav-item">
+      		<a class="nav-link" href="<?= base_url('superadmin/penilaian2') ?>">
+      			<i class="fas fa-fw fa-clipboard"></i>
+      			<span>Hasil Penilaian</span></a>
+      	</li>
       	<hr class="sidebar-divider d-none d-md-block">
       	<!-- Nav Item - Tables -->
       	<li class="nav-item">
@@ -63,3 +72,4 @@
       	<hr class="sidebar-divider d-none d-md-block">
 
       </ul>
+      <!-- End of Sidebar -->

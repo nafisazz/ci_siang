@@ -28,6 +28,16 @@ class Admin_Model extends CI_Model
 		return $this->db->query($query)->result_array();
 	}
 
+	public function getDivisi($divisi)
+	{
+		$this->db->select('*');
+		$this->db->where('divisi', $divisi);
+		$this->db->where('role_id', 3);
+		$this->db->from('pendaftaran');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
 	public function getPesertaById($id)
 	{
 		$query = "SELECT * from pendaftaran where id = $id  ";
