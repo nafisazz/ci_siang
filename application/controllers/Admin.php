@@ -18,7 +18,7 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Sistem Magang DPRD';
-		$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
+	$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['pendaftaran'] = $this->pendaftaran->getAllPendaftarStatus();
 		$this->load->view('templates/auth_header', $data);
