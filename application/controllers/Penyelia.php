@@ -36,6 +36,115 @@ class Penyelia extends CI_Controller
 		$this->load->view('penyelia/peserta', $data);
 		$this->load->view('dashboard/template/footer');
 	}
+
+	public function getPesertaTugas()
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatan($divisi);
+		$data['tugas'] = $this->pendaftaran->getTugas();
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function addtugas()
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatanTugas($divisi);
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/add_tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+	public function insertTugas()
+	{
+
+		$project = array(
+			'user_id' => $this->input->post('user_id'),
+			'judul_tugas' => $this->input->post('judul_project'),
+			'deskripsi_tugas' => $this->input->post('deskripsi_project'),
+			'tanggal_mulai' => $this->input->post('tgl_mulai'),
+			'tanggal_selesai' => $this->input->post('tgl_selesai'),
+			'date_created' => date('Y-m-d')
+		);
+		$tugas = array(
+			'tugas' => 1
+		);
+
+
+
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$this->pendaftaran->insertTugas($project);
+		$this->pendaftaran->updateStatus($tugas, $this->input->post('user_id'));
+		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatan($divisi);
+		$data['tugas'] = $this->pendaftaran->getTugas();
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function updateTugas()
+	{
+
+		$project = array(
+			'user_id' => $this->input->post('user_id'),
+			'judul_tugas' => $this->input->post('judul_project'),
+			'deskripsi_tugas' => $this->input->post('deskripsi_project'),
+			'tanggal_mulai' => $this->input->post('tgl_mulai'),
+			'tanggal_selesai' => $this->input->post('tgl_selesai'),
+			'date_created' => date('Y-m-d')
+		);
+		$tugas = array(
+			'tugas' => 1
+		);
+
+
+
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$this->pendaftaran->updateProject($project, $this->input->post('user_id'));
+		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatan($divisi);
+		$data['tugas'] = $this->pendaftaran->getTugas();
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function deleteTugas($id)
+	{
+
+
+		$tugas = array(
+			'tugas' => 0
+		);
+
+
+
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$this->pendaftaran->deleteProject($id);
+		$this->pendaftaran->updateStatus($tugas, $id);
+		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatan($divisi);
+		$data['tugas'] = $this->pendaftaran->getTugas();
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+
+
 	public function laporan()
 	{
 		$data['title'] = 'Sistem Magang DPRD';
