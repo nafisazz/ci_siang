@@ -59,9 +59,10 @@
 												<td>No</td>
 												<td>Nama</td>
 												<td>Asal Universitas/ Sekolah</td>
-												<td>Project</td>
+												<td>Tugas</td>
 												<td>Tanggal Mulai</td>
 												<td>Tanggal Selesai</td>
+												<td>Sisa Waktu</td>
 												<td>Progress</td>
 												<td>Aksi</td>
 											</tr>
@@ -92,6 +93,20 @@
 														$month = substr($pendaftaran->tanggal_selesai, 5, 2);
 														$day = substr($pendaftaran->tanggal_selesai, 8, 2);
 														echo $day . '-' . $month . '-' . $year;
+														?>
+													</td>
+													<td>
+														<?php
+
+														$waktu_mulai = strtotime($pendaftaran->tanggal_mulai);
+														$waktu_selesai = strtotime($pendaftaran->tanggal_selesai);
+														$waktu_sekarang = strtotime(date('Y-m-d'));
+														$sisa_waktu = $waktu_selesai - $waktu_sekarang;
+														$hari = floor($sisa_waktu / (60 * 60 * 24));
+														$jam = floor(($sisa_waktu - ($hari * 60 * 60 * 24)) / (60 * 60));
+														echo $hari . ' Hari ' . $jam . ' Jam';
+
+
 														?>
 													</td>
 

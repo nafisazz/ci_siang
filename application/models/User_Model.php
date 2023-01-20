@@ -21,9 +21,34 @@ class User_Model extends CI_Model
 		return $query->row_array();
 	}
 
+	public function getHistoryProject($id)
+	{
+		$this->db->select('*');
+		$this->db->from('history_project');
+		$this->db->where('user_id', $id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getproject()
+	{
+		$this->db->select('*');
+		$this->db->from('tugas');
+		$this->db->where('user_id', $this->session->userdata('id'));
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
+
+
 	public function insertKegiatan($data)
 	{
 		$this->db->insert('kegiatan', $data);
+	}
+
+	public function inserthistoryproject($data)
+	{
+		$this->db->insert('history_project', $data);
 	}
 
 	public function getKegiatan()
@@ -34,6 +59,19 @@ class User_Model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function updateTugas($id, $data)
+	{
+		$this->db->where('user_id', $id);
+		$this->db->update('tugas', $data);
+	}
+
+	public function deleteHistoryProject($id)
+	{
+		$this->db->where('id', $id);
+		$this->db->delete('history_project');
+	}
+
 
 	public function getDivisi()
 	{

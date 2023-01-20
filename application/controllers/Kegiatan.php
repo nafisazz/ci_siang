@@ -51,12 +51,12 @@ class Kegiatan extends CI_Controller
 
 	public function updateKegiatan($id)
 	{
-		$data['title'] = 'Sistem Magang DPRD';
-		$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
-		$this->session->userdata('email')])->row_array();
-		$data['kegiatan'] = $this->User_Model->getKegiatanById($id);
-		$this->load->view('templates/auth_header', $data);
-		$this->load->view('user/v_editkegiatan', $data);
-		$this->load->view('dashboard/template/footer');
+
+		$kegiatan = array(
+			'isi_kegiatan' => $this->input->post('isi_kegiatan')
+		);
+
+		$this->User_Model->editKegiatan($id, $kegiatan);
+		redirect('user/kegiatan');
 	}
 }

@@ -122,9 +122,51 @@ class User extends CI_Controller
 		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['session'] = $this->session->userdata('id');
+		$data['project'] = $this->User_Model->getproject($this->session->userdata('id'));
 		$this->load->view('templates/auth_header', $data);
 		$this->load->view('user/kegiatan', $data);
 		$this->load->view('dashboard/template/footer');
+	}
+
+	public function project()
+	{
+
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['kegiatan'] = $this->User_Model->getKegiatan();
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['nm_penyelia'] = $this->User_Model->getNamaPenyeliaById($data['nama']['divisi']);
+		$data['session'] = $this->session->userdata('id');
+		$data['history_project'] = $this->User_Model->getHistoryProject($data['nama']['id']);
+		$data['project'] = $this->User_Model->getproject($this->session->userdata('id'));
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('user/project', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function delete_history_project($id)
+	{
+		$this->User_Model->deleteHistoryProject($id);
+		redirect('user/project');
+	}
+
+
+	public function inserthistoryproject()
+	{
+		$data = array(
+			'user_id' => $this->session->userdata('id'),
+			'isi_kegiatan' => $this->input->post('kegiatan'),
+			'note' => $this->input->post('catatan'),
+			'date_created' => date('Y-m-d h:i:sa ')
+		);
+
+		$progress = array(
+			'progress' => $this->input->post('progress')
+		);
+
+		$this->User_Model->inserthistoryproject($data);
+		$this->User_Model->updateTugas($this->session->userdata('id'), $progress);
+		redirect('user/project');
 	}
 
 	public function insertKegiatan()

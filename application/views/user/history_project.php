@@ -55,6 +55,9 @@
 
 			</tr>
 
+			<hr class="sidebar-divider d-none d-md-block">
+
+
 			<div class="modal fade" id="kegiatan<?= $k->id; ?>">
 				<div class="modal-dialog modal-dialog-scrollable">
 					<div class="modal-content">
@@ -64,6 +67,7 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
+
 
 						<div class="modal-body">
 							<?php echo form_open_multipart('kegiatan/updateKegiatan/' . $k->id); ?>

@@ -40,7 +40,7 @@
 				<!-- Begin Page Content -->
 				<div class="container-fluid">
 					<!-- Page Heading -->
-					<h1 class="h3 mb-4 text-gray-800">Kegiatan Magang</h1>
+					<h1 class="h3 mb-4 text-gray-800">History Project</h1>
 				</div>
 				<!-- /.container-fluid -->
 				<!-- ISI INDEX -->
@@ -54,31 +54,12 @@
 					<div class="row">
 						<?php
 						if ($this->session->userdata('divisi') != '') {
-							require_once('penentuan_kegiatan.php');
+							require_once('kegiatan_form_project.php');
 						} else {
 							require_once('submitform.php');
 						}
 						?>
-						<!-- <div class="col-md-8 offset-md-2">
-							<div class="card">
-								<div class="card-header">
-									Input Kegiatan Siswa Magang
-								</div>
-								<div class="card-body">
-									<form action="<?php echo base_url('kegiatan/insertkegiatan') ?>" method="POST">
 
-										<div class="form-group">
-											<label>Kegiatan Hari ini</label>
-											<textarea class="form-control" name="kegiatan" placeholder="Isi Kegiatan Hari ini" value=""></textarea>
-										</div>
-
-										<button type="submit" class="btn btn-primary">SIMPAN</button>
-										<button type="reset" class="btn btn-warning">RESET</button>
-
-									</form>
-								</div>
-							</div>
-						</div> -->
 					</div>
 				</div>
 
@@ -87,7 +68,7 @@
 				<div class="container">
 					<?php
 					if ($this->session->userdata('divisi') != '') {
-						require_once('tabel_penentuan.php');
+						require_once('tabel_penentuan2.php');
 					}
 					?>
 
@@ -113,8 +94,6 @@
 
 				</div>
 			</div>
-
-
 
 
 			<!-- END ISI INDEX         -->
