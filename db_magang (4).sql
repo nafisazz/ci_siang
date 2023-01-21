@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 17, 2023 at 03:42 AM
+-- Generation Time: Jan 21, 2023 at 07:49 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.0.13
 
@@ -65,6 +65,27 @@ INSERT INTO `divisi` (`id`, `divisi`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `history_project`
+--
+
+CREATE TABLE `history_project` (
+  `id` int(80) NOT NULL,
+  `user_id` int(80) NOT NULL,
+  `isi_kegiatan` text NOT NULL,
+  `note` text NOT NULL,
+  `date_created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `history_project`
+--
+
+INSERT INTO `history_project` (`id`, `user_id`, `isi_kegiatan`, `note`, `date_created`) VALUES
+(2, 54, 'sad', 'asssdadadadadasd', '2023-01-20');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kegiatan`
 --
 
@@ -93,7 +114,9 @@ INSERT INTO `kegiatan` (`id`, `isi_kegiatan`, `tanggal`, `user_id`) VALUES
 (20, 'perkenalan', '2023-01-08 20:26:42', 51),
 (21, 'makan', '2023-01-08 20:28:32', 51),
 (24, 'perkenalan diri', '2023-01-10 03:23:09', 52),
-(25, 'input kegiatan', '2023-01-10 03:27:33', 52);
+(25, 'input kegiatan', '2023-01-10 03:27:33', 52),
+(29, 'asda', '2023-01-19 21:15:49', 54),
+(30, 'kjj', '2023-01-19 21:15:57', 54);
 
 -- --------------------------------------------------------
 
@@ -151,30 +174,31 @@ CREATE TABLE `pendaftaran` (
   `acc` varchar(30) NOT NULL DEFAULT 'belum',
   `alasan` text NOT NULL,
   `status` int(11) NOT NULL,
-  `penilaian` int(11) NOT NULL
+  `penilaian` int(11) NOT NULL,
+  `tugas` smallint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `pendaftaran`
 --
 
-INSERT INTO `pendaftaran` (`id`, `nama_peserta`, `nim`, `image`, `alamat`, `jenis_kel`, `agama`, `asal_sekolah`, `alamat_sekolah`, `jurusan`, `email`, `no_telp`, `password`, `role_id`, `data_created`, `divisi`, `surat_ket`, `tgl_mulai`, `tgl_selesai`, `acc`, `alasan`, `status`, `penilaian`) VALUES
-(1, 'Penyelia Tata Usaha', '0', 'default.png', 'penyelia', NULL, 'islam', 'penyelia', '', '', 'penyelia@tatausaha.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672829011, 2, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0),
-(2, 'Penyelia Perlengkapan', '0', 'default.png', 'jl. bandar lampung', NULL, 'islam', 'penyelia', '', '', 'penyelia@perlengkapan.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672838079, 3, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0),
-(3, 'Penyelia Perlengkapan', '0', 'default.png', 'penyelia', 'P', 'islam', 'penyelia', '', 'penyelia', 'penyelia@perlengkapan.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, 4, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0),
-(13, 'admin', '0', 'default.png', 'admin', 'L', 'islam', 'undip', NULL, 'Ekonomi', 'admin@gmail.com', '121212', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1671355420, 0, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0),
-(29, 'Penyelia Humas', '0', 'default.png', 'Penyelia', NULL, 'islam', 'udinus', NULL, 'IT', 'penyelia@gmail.com', '098767643', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672046277, 1, '0', NULL, NULL, 'lolos', '', 1, 0),
-(34, 'Fajri Hasan', 'a22', 'default.png', 'Jl. Raden Intan No.55, Enggal', 'L', 'islam', 'udinus', 'Jl. Nakula', 'Teknik Informatika', 'yutubsu767@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672468568, 1, '221219-ALUR.pdf', '2023-02-10', '2023-03-10', 'tidak_aktif', '', 1, 0),
-(47, 'nafisa', '8676876', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'udinus', 'jl, nakula', 'Teknik Informatika', 'raabtahai@gmail.com', '0876856469', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672916719, 2, '221219-ALUR.pdf', '2023-01-11', '2023-01-26', 'tidak_aktif', '', 1, 0),
-(48, 'yuyu', '8567576576', 'default.png', 'jl', 'P', 'islam', 'udinus', 'jl bulu', 'ti', 'asd@gmail.com', '09876543', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672929532, 1, '221219-ALUR.pdf', '2023-01-18', '2023-01-26', 'tidak_aktif', '', 1, 0),
-(49, 'Nafisa Azzahra', 'Y76564728', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'qwe@gmail.com', '0876856469', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672934133, 1, '221219-ALUR.pdf', '2023-01-10', '2023-01-31', 'tidak_aktif', '', 1, 0),
-(50, 'Hayati', '34687792', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'abc@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673140099, 3, '221219-ALUR.pdf', '2022-02-20', '2002-02-20', 'ditolak', '																												', 1, 0),
-(51, 'hayati lelah', 'A22.0202', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'hayati@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673183620, 1, '221219-ALUR.pdf', '2023-01-12', '2023-01-31', 'tidak_aktif', '', 1, 0),
-(52, 'Alvina', 'A22.2020.02834', 'default.png', 'Jl. P. Antasari No.15, Kedamaian', 'P', 'islam', 'undip', 'jl, nakula', 'Teknik Informatika', 'nim@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673245655, 1, '221219-ALUR.pdf', '2023-01-17', '2023-01-25', 'tidak_aktif', '', 1, 0),
-(53, 'Nafisa Khally', 'A22.2020.02834', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl. Imam Bonjol', 'Teknik Informatika D3', 'nafisa@gmail.com', '087546576767', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673314193, 1, '221219-ALUR.pdf', '2023-01-10', '2023-02-28', 'tidak_aktif', '', 1, 0),
-(54, 'Azzahra', 'A22.2020.02834', 'default.png', 'jl. bandar lampung', NULL, 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika D3', 'zahra@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673316902, 1, '221219-ALUR.pdf', '2023-01-10', '2022-12-22', 'belum', '', 1, 0),
-(62, 'kevin', 'A22.2020.02832', 'default.png', 'asdd', 'L', 'islam', 'asdasdasd', 'asdd', 'asdsad', '1@gmail.com', '0808023', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673708486, 2, 'LAPORAN_KKI_KEVIN2.pdf', '2023-01-14', '2023-01-19', 'belum', '', 1, 0),
-(63, 'Super Admin', '0', 'default.png', 'admin', 'L', 'islam', 'undip', NULL, 'Ekonomi', 'superadmin@gmail.com', '121212', '827ccb0eea8a706c4c34a16891f84e7b', 4, 1671355420, 0, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0);
+INSERT INTO `pendaftaran` (`id`, `nama_peserta`, `nim`, `image`, `alamat`, `jenis_kel`, `agama`, `asal_sekolah`, `alamat_sekolah`, `jurusan`, `email`, `no_telp`, `password`, `role_id`, `data_created`, `divisi`, `surat_ket`, `tgl_mulai`, `tgl_selesai`, `acc`, `alasan`, `status`, `penilaian`, `tugas`) VALUES
+(1, 'Penyelia Tata Usaha', '0', 'default.png', 'penyelia', NULL, 'islam', 'penyelia', '', '', 'penyelia@tatausaha.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672829011, 2, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0, 0),
+(2, 'Penyelia Perlengkapan', '0', 'default.png', 'jl. bandar lampung', NULL, 'islam', 'penyelia', '', '', 'penyelia@perlengkapan.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672838079, 3, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0, 1),
+(3, 'Penyelia Perlengkapan', '0', 'default.png', 'penyelia', 'P', 'islam', 'penyelia', '', 'penyelia', 'penyelia@perlengkapan.com', '', '827ccb0eea8a706c4c34a16891f84e7b', 2, 0, 4, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0, 0),
+(13, 'admin', '0', 'default.png', 'admin', 'L', 'islam', 'undip', NULL, 'Ekonomi', 'admin@gmail.com', '121212', '827ccb0eea8a706c4c34a16891f84e7b', 1, 1671355420, 0, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0, 0),
+(29, 'Penyelia Humas', '0', 'default.png', 'Penyelia', NULL, 'islam', 'udinus', NULL, 'IT', 'penyelia@gmail.com', '098767643', '827ccb0eea8a706c4c34a16891f84e7b', 2, 1672046277, 1, '0', NULL, NULL, 'lolos', '', 1, 0, 0),
+(34, 'Fajri Hasan', 'a22', 'default.png', 'Jl. Raden Intan No.55, Enggal', 'L', 'islam', 'udinus', 'Jl. Nakula', 'Teknik Informatika', 'yutubsu767@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672468568, 1, '221219-ALUR.pdf', '2023-02-10', '2023-03-10', 'tidak_aktif', '', 1, 0, 0),
+(47, 'nafisa', '8676876', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'udinus', 'jl, nakula', 'Teknik Informatika', 'raabtahai@gmail.com', '0876856469', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672916719, 2, '221219-ALUR.pdf', '2023-01-11', '2023-01-26', 'tidak_aktif', '', 1, 0, 0),
+(48, 'yuyu', '8567576576', 'default.png', 'jl', 'P', 'islam', 'udinus', 'jl bulu', 'ti', 'asd@gmail.com', '09876543', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672929532, 1, '221219-ALUR.pdf', '2023-01-18', '2023-01-26', 'tidak_aktif', '', 1, 0, 0),
+(49, 'Nafisa Azzahra', 'Y76564728', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'qwe@gmail.com', '0876856469', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1672934133, 1, '221219-ALUR.pdf', '2023-01-10', '2023-01-31', 'tidak_aktif', '', 1, 0, 0),
+(50, 'Hayati', '34687792', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'abc@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673140099, 3, '221219-ALUR.pdf', '2022-02-20', '2002-02-20', 'ditolak', '																												', 1, 0, 0),
+(51, 'hayati lelah', 'A22.0202', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika', 'hayati@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673183620, 1, '221219-ALUR.pdf', '2023-01-12', '2023-01-31', 'tidak_aktif', '', 1, 0, 0),
+(52, 'Alvina', 'A22.2020.02834', 'default.png', 'Jl. P. Antasari No.15, Kedamaian', 'P', 'islam', 'undip', 'jl, nakula', 'Teknik Informatika', 'nim@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673245655, 1, '221219-ALUR.pdf', '2023-01-17', '2023-01-25', 'tidak_aktif', '', 1, 0, 0),
+(53, 'Nafisa Khally', 'A22.2020.02834', 'default.png', 'jl. bandar lampung', 'P', 'islam', 'UDINUS', 'jl. Imam Bonjol', 'Teknik Informatika D3', 'nafisa@gmail.com', '087546576767', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673314193, 1, '221219-ALUR.pdf', '2023-01-10', '2023-02-28', 'tidak_aktif', '', 1, 0, 0),
+(54, 'Azzahra', 'A22.2020.02834', 'default.png', 'jl. bandar lampung', NULL, 'islam', 'UDINUS', 'jl, nakula', 'Teknik Informatika D3', 'zahra@gmail.com', '08383838', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673316902, 2, '221219-ALUR.pdf', '2023-01-10', '2022-12-22', 'lolos', '', 1, 0, 1),
+(62, 'kevin', 'A22.2020.02832', 'default.png', 'asdd', 'L', 'islam', 'asdasdasd', 'asdd', 'asdsad', '1@gmail.com', '0808023', '827ccb0eea8a706c4c34a16891f84e7b', 3, 1673708486, 2, 'LAPORAN_KKI_KEVIN2.pdf', '2023-01-14', '2023-01-19', 'lolos', '', 1, 0, 0),
+(63, 'Super Admin', '0', 'default.png', 'admin', 'L', 'islam', 'undip', NULL, 'Ekonomi', 'superadmin@gmail.com', '121212', '827ccb0eea8a706c4c34a16891f84e7b', 4, 1671355420, 0, '0', '0000-00-00', '0000-00-00', 'lolos', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -196,6 +220,29 @@ INSERT INTO `penyelia` (`id`, `email`, `password`) VALUES
 (1, 'penyelia@humas.com', '12345'),
 (2, 'penyelia@perlengkapan.com', '12345'),
 (3, 'penyelia@keuangan.com', '12345');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tugas`
+--
+
+CREATE TABLE `tugas` (
+  `user_id` int(80) NOT NULL,
+  `judul_tugas` varchar(250) NOT NULL,
+  `deskripsi_tugas` text NOT NULL,
+  `tanggal_mulai` date NOT NULL,
+  `tanggal_selesai` date NOT NULL,
+  `progress` int(3) NOT NULL DEFAULT 0,
+  `date_created` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tugas`
+--
+
+INSERT INTO `tugas` (`user_id`, `judul_tugas`, `deskripsi_tugas`, `tanggal_mulai`, `tanggal_selesai`, `progress`, `date_created`) VALUES
+(54, 'Membuat aplikasi Adisti', 'Aplikasi Adisti', '2023-01-26', '2023-03-15', 50, '2023-01-19');
 
 -- --------------------------------------------------------
 
@@ -249,6 +296,12 @@ ALTER TABLE `divisi`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `history_project`
+--
+ALTER TABLE `history_project`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
@@ -273,6 +326,12 @@ ALTER TABLE `penyelia`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tugas`
+--
+ALTER TABLE `tugas`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -295,10 +354,16 @@ ALTER TABLE `divisi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `history_project`
+--
+ALTER TABLE `history_project`
+  MODIFY `id` int(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(80) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `nilai`
