@@ -119,7 +119,7 @@
 													</td>
 
 													<td>
-														<a href="<?= base_url('admin/pendaftaran/assign/' . $pendaftaran->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye fa-sm"></i></a>
+														<a href="<?= base_url('penyelia/getHistoryProject/' . $pendaftaran->id) ?>" class="btn btn-success btn-sm"><i class="fa fa-eye fa-sm"></i></a>
 
 														<button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#tugas<?= $pendaftaran->id; ?>">
 															<i class="fa fa-edit fa-sm"></i>

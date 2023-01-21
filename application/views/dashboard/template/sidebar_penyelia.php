@@ -35,11 +35,15 @@
       			<span>Data Peserta </span></a>
       	</li>
       	<hr class="sidebar-divider d-none d-md-block">
+      	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+      			<i class="fas fa-fw fa-clipboard"></i>
+      			<span>Kegiatan dan Project</span></a>
+      		<ul class="dropdown-menu">
 
-      	<li class="nav-item">
-      		<a class="nav-link" href="<?= base_url('penyelia/getPesertaTugas') ?>">
-      			<i class="fas fa-fw fa-users"></i>
-      			<span>Daftar Project</span></a>
+      			<li><a class="dropdown-item" href="<?= base_url('penyelia/getkegiatanharian') ?>">Kegiatan Harian</a></li>
+      			<li><a class="dropdown-item" href="<?= base_url('penyelia/getPesertaTugas') ?>">Project</a></li>
+      		</ul>
       	</li>
       	<hr class="sidebar-divider d-none d-md-block">
       	<li class="nav-item">

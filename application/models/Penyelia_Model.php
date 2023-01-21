@@ -42,6 +42,29 @@ class Penyelia_Model extends CI_Model
 		return $query->result();
 	}
 
+	public function getHarian($divisi)
+	{
+
+		$this->db->select('*');
+		$this->db->where('role_id', 3);
+		$this->db->where('divisi', $divisi);
+		$this->db->where('acc', 'lolos');
+		$this->db->from('pendaftaran');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getKegiatanBy($id)
+	{
+
+		$this->db->select('*');
+		$this->db->where('user_id', $id);
+		$this->db->from('kegiatan');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+
 
 
 	public function getTugas()
@@ -52,6 +75,26 @@ class Penyelia_Model extends CI_Model
 		$query = $this->db->get();
 		return $query->result_array();
 	}
+
+	public function getHistoryProjectById($id)
+	{
+		$this->db->select('*');
+		$this->db->from('history_project');
+		$this->db->where('user_id', $id);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function gettugasBYID($id)
+	{
+
+		$this->db->select('*');
+		$this->db->where('user_id', $id);
+		$this->db->from('tugas');
+		$query = $this->db->get();
+		return $query->row_array();
+	}
+
 
 	public function insertTugas($data)
 	{

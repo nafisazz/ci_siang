@@ -50,6 +50,18 @@ class Penyelia extends CI_Controller
 		$this->load->view('dashboard/template/footer');
 	}
 
+	public function getHistoryProject($id)
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$data['tugas'] = $this->pendaftaran->gettugasBYID($id);
+		$data['history_project'] = $this->pendaftaran->getHistoryProjectById($id);
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/history_project', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
 	public function addtugas()
 	{
 		$data['title'] = 'Sistem Magang DPRD';
@@ -59,6 +71,31 @@ class Penyelia extends CI_Controller
 		$data['pendaftaran'] = $this->pendaftaran->getPesertaKegiatanTugas($divisi);
 		$this->load->view('templates/auth_header', $data);
 		$this->load->view('penyelia/add_tugas', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function getkegiatanharian()
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$data['pendaftaran'] = $this->pendaftaran->getHarian($divisi);
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/daftar_kegiatan', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+
+	public function detailKegiatan($id)
+	{
+		$data['title'] = 'Sistem Magang DPRD';
+		$data['nama'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$divisi = $this->session->userdata('divisi');
+		$data['kegiatan'] = $this->pendaftaran->getKegiatanBy($id);
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('penyelia/detail_kegiatan', $data);
 		$this->load->view('dashboard/template/footer');
 	}
 	public function insertTugas()
