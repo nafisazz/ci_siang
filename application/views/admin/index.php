@@ -110,7 +110,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<form action="<?= base_url('admin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
+												<form action="<?= base_url('SendEmail/index/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
 													<p>Apakah anda yakin ingin mensetujui perizinan? Jika iya klik oke untuk melanjutkan</p>
 													<input type="hidden" name="acc" value="lolos">
 											</div>
@@ -184,7 +184,7 @@
 												</button>
 											</div>
 											<div class="modal-body">
-												<form action="<?= base_url('admin/edit_riwayat/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
+												<form action="<?= base_url('SendEmail/index/') . $pendaftaran['id']; ?>" method="POST" enctype="multipart/form-data">
 
 													<input type="hidden" name="acc" value="ditolak">
 													<div class="mb-3">

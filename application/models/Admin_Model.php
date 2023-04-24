@@ -43,4 +43,13 @@ class Admin_Model extends CI_Model
 		$query = "SELECT * from pendaftaran where id = $id  ";
 		return $this->db->query($query)->row_array();
 	}
+
+	public function get_divisi($id)
+	{
+		$this->db->select('*');
+		$this->db->where('id', $id);
+		$this->db->from('divisi');
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 }
