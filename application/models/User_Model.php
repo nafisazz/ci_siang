@@ -119,4 +119,21 @@ class User_Model extends CI_Model
 	{
 		$this->db->insert('nilai', $data);
 	}
+
+	public function register($data)
+	{
+		$insert = $this->db->insert('pendaftaran', $data);
+		if ($insert) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	public function emailValidate($email)
+	{
+		$this->db->select('email');
+		$this->db->from('pendaftaran');
+		$this->db->where('email', $email);
+		return $this->db->get()->result();
+	}
 }
