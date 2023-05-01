@@ -136,4 +136,12 @@ class User_Model extends CI_Model
 		$this->db->where('email', $email);
 		return $this->db->get()->result();
 	}
+
+	public function auth($email)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('email', $email);
+		return $this->db->get()->row_array();
+	}
 }
