@@ -8,7 +8,7 @@ class AuthApi extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('User_mode', 'user_model');
+		$this->load->model('User_model', 'user_model');
 	}
 	public function register()
 	{
@@ -17,7 +17,7 @@ class AuthApi extends CI_Controller
 			'nama_peserta' => $this->input->post('nama_peserta'),
 			'nim' => $this->input->post('nim'),
 			'alamat' => $this->input->post('alamat'),
-			'jenis_kel' => $this->input->post('jenis)kel'),
+			'jenis_kel' => $this->input->post('jeniskel'),
 			'agama' => $this->input->post('agama'),
 			'asal_sekolah' => $this->input->post('asal_sekolah'),
 			'alamat_sekolah' => $this->input->post('alamat_sekolah'),
@@ -25,13 +25,14 @@ class AuthApi extends CI_Controller
 			'email' => $email,
 			'no_telp' => $this->input->post('no_telp'),
 			'password' => md5($this->input->post('password')),
-			'role_id' => 3
+			'role_id' => 3,
+			'image' => 'default.png',
 
 		];
 
-		$validateEmail = $this->user_Model->emailValidate($email);
+		$validateEmail = $this->user_model->emailValidate($email);
 		if ($validateEmail == null) {
-			$register = $this->user_Model->register($data);
+			$register = $this->user_model->register($data);
 			if ($register == true) {
 				$response = [
 					'code' => 200
