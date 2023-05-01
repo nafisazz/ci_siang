@@ -63,7 +63,10 @@ class AuthApi extends CI_Controller
 		if ($cekEmail != null) {
 			if ($cekEmail['password'] == md5($password)) {
 				$response = [
-					'code' => 200
+					'code' => 200,
+					'id' => $cekEmail['id'],
+					'nama_peserta' => $cekEmail['nama_peserta'],
+					'role_id' => $cekEmail['role_id']
 				];
 				echo json_encode($response);
 			} else {
