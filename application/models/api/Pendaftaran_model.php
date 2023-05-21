@@ -51,6 +51,28 @@ class Pendaftaran_model extends CI_Model
 		$this->db->where('role_id', 3);
 		return $this->db->get()->result();
 	}
+
+	public function getAllPendaftarByDivisi($divisi)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc !=', 'belum');
+		$this->db->where('divisi', $divisi);
+		return $this->db->get()->result();
+	}
+
+	public function getAllPendaftarAcc()
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc !=', 'belum');
+		$this->db->where('acc !=', 'ditolak');
+		$this->db->join('nilai', 'nilai.id_peserta = pendaftaran.id', 'left');
+
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file Peserta_model.php */

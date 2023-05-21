@@ -26,6 +26,7 @@ class Admin extends CI_Controller
 		date_default_timezone_set('Asia/Jakarta');
 		parent::__construct();
 		$this->load->model('api/Pendaftaran_model', 'pendaftaran_model');
+		$this->load->model('api/divisi_model', 'divisi_model');
 	}
 
 	public function getAllPendaftar()
@@ -101,6 +102,22 @@ class Admin extends CI_Controller
 			];
 			echo json_encode($response);
 		}
+	}
+
+	public function getAllDivisi()
+	{
+		echo json_encode($this->divisi_model->getAllDivisi());
+	}
+
+	public function getPesertaByDivisi()
+	{
+		$divisi = $this->input->get('divisi');
+		echo json_encode($this->pendaftaran_model->getAllPendaftarByDivisi($divisi));
+	}
+
+	public function getPesertaAcc()
+	{
+		echo json_encode($this->pendaftaran_model->getAllPendaftarAcc());
 	}
 }
 
