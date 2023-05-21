@@ -208,7 +208,7 @@ class Peserta extends CI_Controller
 		];
 
 		$dataproject = [
-			'progress' => $this->input->post('progress')
+			'progress' => $this->input->post('data_progress')
 		];
 		$trans = $this->history_project->updateHistory($historyId, $userId, $dataproject, $dataHistory);
 		if ($trans == true) {

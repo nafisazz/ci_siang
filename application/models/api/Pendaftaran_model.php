@@ -43,6 +43,14 @@ class Pendaftaran_model extends CI_Model
 			return false;
 		}
 	}
+
+	public function getAllPendaftar()
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file Peserta_model.php */
