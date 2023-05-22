@@ -62,6 +62,18 @@ class Pendaftaran_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	public function getAllPendaftarByDivisi2($divisi)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc !=', 'belum');
+		$this->db->where('acc !=', 'ditolak');
+		$this->db->where('divisi', $divisi);
+		return $this->db->get()->result();
+	}
+
+
 	public function getAllPendaftarAcc()
 	{
 		$this->db->select('*');
@@ -71,6 +83,28 @@ class Pendaftaran_model extends CI_Model
 		$this->db->where('acc !=', 'ditolak');
 		$this->db->join('nilai', 'nilai.id_peserta = pendaftaran.id', 'left');
 
+		return $this->db->get()->result();
+	}
+
+	public function getAllPendaftarProject($divisi)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc', 'lolos');
+		$this->db->where('tugas !=', 1);
+		$this->db->where('divisi', $divisi);
+		return $this->db->get()->result();
+	}
+
+	public function getAllPendaftarActiveByDivisi($divisi)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc', 'lolos');
+		$this->db->where('penilaian', 0);
+		$this->db->where('divisi', $divisi);
 		return $this->db->get()->result();
 	}
 }

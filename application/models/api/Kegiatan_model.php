@@ -32,7 +32,6 @@ class Kegiatan_model extends CI_Model
 		$this->db->from('kegiatan');
 		$this->db->where('user_id', $user_id);
 		$this->db->order_by('id', 'desc');
-
 		return $this->db->get()->result();
 	}
 

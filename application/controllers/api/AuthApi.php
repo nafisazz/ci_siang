@@ -66,7 +66,8 @@ class AuthApi extends CI_Controller
 					'code' => 200,
 					'id' => $cekEmail['id'],
 					'nama_peserta' => $cekEmail['nama_peserta'],
-					'role_id' => $cekEmail['role_id']
+					'role_id' => $cekEmail['role_id'],
+					'divisi' => $cekEmail['divisi']
 				];
 				echo json_encode($response);
 			} else {
