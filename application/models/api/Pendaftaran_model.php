@@ -26,9 +26,11 @@ class Pendaftaran_model extends CI_Model
 
 	public function getPesertaById($userId)
 	{
-		$this->db->select('*');
+		$this->db->select('pendaftaran.*, p.nama_peserta as nama_penyelia');
 		$this->db->from('pendaftaran');
-		$this->db->where('id', $userId);
+		$this->db->join('pendaftaran p', 'p.divisi = pendaftaran.divisi', 'left');
+		$this->db->where('p.role_id', 2);
+		$this->db->where('pendaftaran.id', $userId);
 		return $this->db->get()->row_array();
 	}
 
@@ -105,6 +107,18 @@ class Pendaftaran_model extends CI_Model
 		$this->db->where('acc', 'lolos');
 		$this->db->where('penilaian', 0);
 		$this->db->where('divisi', $divisi);
+		return $this->db->get()->result();
+	}
+
+	public function getAllPendaftarSelesai($divisi)
+	{
+		$this->db->select('pendaftaran.*, nilai.inovasi, nilai.kerja_sama, nilai.disiplin, nilai.rata');
+		$this->db->from('pendaftaran');
+		$this->db->where('role_id', 3);
+		$this->db->where('acc', 'tidak_aktif');
+		$this->db->where('penilaian', 1);
+		$this->db->where('divisi', $divisi);
+		$this->db->join('nilai', 'nilai.id_peserta = pendaftaran.id', 'left');
 		return $this->db->get()->result();
 	}
 }

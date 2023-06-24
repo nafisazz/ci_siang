@@ -165,6 +165,36 @@ class Penyelia extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	public function getAllPendaftarSelesai()
+	{
+		$divisi = $this->input->get('divisi');
+		echo json_encode($this->pendaftaran_model->getAllPendaftarSelesai($divisi));
+	}
+
+	function updateProfile()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'nama_peserta' => $this->input->post('nama_peserta'),
+			'alamat' => $this->input->post('alamat'),
+			'password' => md5($this->input->post('password'))
+
+		];
+
+		$update =  $this->pendaftaran_model->update($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
 
 

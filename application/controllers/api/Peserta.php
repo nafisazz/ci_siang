@@ -223,4 +223,67 @@ class Peserta extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function updatePhotoProfile()
+	{
+		$id = $this->input->post('id');
+
+		$config['upload_path']          = './assets/img/profile';
+		$config['allowed_types']        = 'jpg|png|jpeg';
+		$config['max_size']             = 5000;
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		if (!$this->upload->do_upload('photo')) {
+			$response =  [
+				'code' => 404,
+				'message' => 'Format file tidak sesuai'
+			];
+			echo json_encode($response);
+		} else {
+			$data = [
+				'image' => $this->upload->data('file_name')
+			];
+			$update = $this->pendaftaran_model->update($id, $data);
+			if ($update == true) {
+				$response = [
+					'code' => 200
+				];
+				echo json_encode($response);
+			} else {
+				$response = [
+					'code' => 404,
+					'message' => 'Gagal mengubah foto profil'
+				];
+				echo json_encode($response);
+			}
+		}
+	}
+
+	function updateProfile()
+	{
+		$id = $this->input->post('id');
+		$data = [
+			'nama_peserta' => $this->input->post('nama_peserta'),
+			'alamat' => $this->input->post('alamat'),
+			'asal_sekolah' => $this->input->post('asal_sekolah'),
+			'jurusan' => $this->input->post('jurusan'),
+			'nim' => $this->input->post('nim'),
+			'alamat_sekolah' => $this->input->post('alamat_sekolah'),
+			'no_telp' => $this->input->post('no_telp')
+
+		];
+
+		$update =  $this->pendaftaran_model->update($id, $data);
+		if ($update == true) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }
