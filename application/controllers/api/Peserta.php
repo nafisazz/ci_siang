@@ -15,6 +15,12 @@ class Peserta extends CI_Controller
 		$this->load->model('api/historyproject_model', 'history_project');
 	}
 
+	public function getPesertaById2()
+	{
+		$userId = $this->input->get('user_id');
+		echo json_encode($this->pendaftaran_model->getPesertaById2($userId));
+	}
+
 	public function getPesertaById()
 	{
 		$userId = $this->input->get('user_id');

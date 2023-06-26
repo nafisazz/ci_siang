@@ -24,6 +24,14 @@ class Pendaftaran_model extends CI_Model
 		parent::__construct();
 	}
 
+	public function getPesertaById2($userId)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('pendaftaran.id', $userId);
+		return $this->db->get()->row_array();
+	}
+
 	public function getPesertaById($userId)
 	{
 		$this->db->select('pendaftaran.*, p.nama_peserta as nama_penyelia');
