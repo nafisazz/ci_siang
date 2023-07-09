@@ -292,4 +292,20 @@ class Peserta extends CI_Controller
 			echo json_encode($response);
 		}
 	}
+
+	function validasiKuotaMagang()
+	{
+		$kuota = $this->pendaftaran_model->cekKuotaMagang();
+		if ($kuota <= 10) {
+			$response = [
+				'code' => 200
+			];
+			echo json_encode($response);
+		} else {
+			$response = [
+				'code' => 404
+			];
+			echo json_encode($response);
+		}
+	}
 }

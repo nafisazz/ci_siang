@@ -129,6 +129,16 @@ class Pendaftaran_model extends CI_Model
 		$this->db->join('nilai', 'nilai.id_peserta = pendaftaran.id', 'left');
 		return $this->db->get()->result();
 	}
+
+	function cekKuotaMagang()
+	{
+		$yearNow = date('Y');
+		$this->db->select('id');
+		$this->db->from('pendaftaran');
+		$this->db->where('acc', 'lolos');
+		$this->db->where('Year(tgl_mulai)', $yearNow);
+		return $this->db->get()->num_rows();
+	}
 }
 
 /* End of file Peserta_model.php */
