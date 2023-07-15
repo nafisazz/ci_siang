@@ -119,6 +119,22 @@ class Admin extends CI_Controller
 	{
 		echo json_encode($this->pendaftaran_model->getAllPendaftarAcc());
 	}
+
+	function downloadLaporan($dateStart, $dateEnd)
+	{
+		$data = $this->pendaftaran_model->rekapPendaftaran(
+			$dateStart,
+			$dateEnd
+		);
+
+		$this->load->library('pdflib');
+		$this->pdflib->setFileName('Laporan_transaksi.pdf');
+		$this->pdflib->setPaper('A4', 'landscape');
+		$data['rekap'] = $data;
+		$data['date_start'] = $dateStart;
+		$data['date_end'] = $dateEnd;
+		$this->pdflib->loadView('v_report', $data);
+	}
 }
 
 

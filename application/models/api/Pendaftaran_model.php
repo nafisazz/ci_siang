@@ -139,6 +139,19 @@ class Pendaftaran_model extends CI_Model
 		$this->db->where('Year(tgl_mulai)', $yearNow);
 		return $this->db->get()->num_rows();
 	}
+
+	function rekapPendaftaran($dateStart, $dateEnd)
+	{
+		$this->db->select('pendaftaran.*, divisi.divisi as nama_divisi');
+		$this->db->from('pendaftaran');
+		$this->db->where('Date(pendaftaran.tgl_mulai) >=', $dateStart);
+		$this->db->where('Date(pendaftaran.tgl_selesai) <=', $dateEnd);
+		$this->db->where('pendaftaran.role_id', 3);
+		$this->db->where('pendaftaran.acc !=', 'ditolak');
+		$this->db->where('pendaftaran.acc !=', 'belum');
+		$this->db->join('divisi', 'divisi.id = pendaftaran.divisi', 'left');
+		return $this->db->get()->result();
+	}
 }
 
 /* End of file Peserta_model.php */

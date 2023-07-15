@@ -296,7 +296,7 @@ class Peserta extends CI_Controller
 	function validasiKuotaMagang()
 	{
 		$kuota = $this->pendaftaran_model->cekKuotaMagang();
-		if ($kuota <= 10) {
+		if ($kuota <= 50) {
 			$response = [
 				'code' => 200
 			];
