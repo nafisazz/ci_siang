@@ -115,6 +115,15 @@ class Admin extends CI_Controller
 		echo json_encode($this->pendaftaran_model->getAllPendaftarByDivisi($divisi));
 	}
 
+	public function getPesertaByDivisiFilter()
+	{
+		$divisi = $this->input->get('divisi');
+		$dateStart = $this->input->get('date_start');
+		$dateEnd = $this->input->get('date_end');
+		echo json_encode($this->pendaftaran_model->getAllPendaftarByDivisiFilter($divisi, $dateStart, $dateEnd));
+	}
+
+
 	public function getPesertaAcc()
 	{
 		echo json_encode($this->pendaftaran_model->getAllPendaftarAcc());

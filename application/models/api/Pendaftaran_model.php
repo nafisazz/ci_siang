@@ -72,6 +72,20 @@ class Pendaftaran_model extends CI_Model
 		return $this->db->get()->result();
 	}
 
+	public function getAllPendaftarByDivisiFilter($divisi, $dateStart, $dateEnd)
+	{
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('Date(tgl_mulai) >=', $dateStart);
+		$this->db->where('Date(tgl_selesai) <=', $dateEnd);
+		$this->db->where('role_id', 3);
+		$this->db->where('acc !=', 'belum');
+		$this->db->where('divisi', $divisi);
+		return $this->db->get()->result();
+	}
+
+
+
 	public function getAllPendaftarByDivisi2($divisi)
 	{
 		$this->db->select('*');
