@@ -52,4 +52,14 @@ class Admin_Model extends CI_Model
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	function getPendaftarByStatus($status)
+	{
+
+		$this->db->select('*');
+		$this->db->from('pendaftaran');
+		$this->db->where('acc', $status);
+		$this->db->where('role_id != ', 2);
+		return $this->db->get()->result_array();
+	}
 }

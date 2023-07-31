@@ -32,6 +32,19 @@
       	<li class="nav-item dropdown">
       		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
       			<i class="fas fa-fw fa-clipboard"></i>
+      			<span>Status Magang</span></a>
+      		<ul class="dropdown-menu">
+      			<li><a class="dropdown-item" href="<?= base_url('admin/statusMagang/2') ?>">Belum Verifikasi</a></li>
+      			<li><a class="dropdown-item" href="<?= base_url('admin/statusMagang/1') ?>">Peserta Lolos</a></li>
+      			<li><a class="dropdown-item" href="<?= base_url('admin/statusMagang/0') ?>">Peserta Ditolak</a></li>
+      		</ul>
+      	</li>
+
+      	<hr class="sidebar-divider d-none d-md-block">
+
+      	<li class="nav-item dropdown">
+      		<a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+      			<i class="fas fa-fw fa-clipboard"></i>
       			<span>Data Mahasiswa</span></a>
       		<ul class="dropdown-menu">
 

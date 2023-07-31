@@ -18,7 +18,7 @@ class Admin extends CI_Controller
 	public function index()
 	{
 		$data['title'] = 'Sistem Magang DPRD';
-	$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
+		$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
 		$this->session->userdata('email')])->row_array();
 		$data['pendaftaran'] = $this->pendaftaran->getAllPendaftarStatus();
 		$this->load->view('templates/auth_header', $data);
@@ -45,6 +45,28 @@ class Admin extends CI_Controller
 		$data['divisi'] = $this->pendaftaran->getDivisi($divisi);
 		$this->load->view('templates/auth_header', $data);
 		$this->load->view('admin/daftar_peserta', $data);
+		$this->load->view('dashboard/template/footer');
+	}
+
+	public function statusMagang($status)
+	{
+		if ($status == 1) {
+			$data['title'] = 'Sistem Magang DPRD';
+			$data['judul'] = 'Peserta Lolos';
+			$data['data'] = $this->pendaftaran->getPendaftarByStatus('lolos');
+		} else if ($status == 0) {
+			$data['title'] = 'Sistem Magang DPRD';
+			$data['judul'] = 'Peserta Ditolak';
+			$data['data'] = $this->pendaftaran->getPendaftarByStatus('ditolak');
+		} else if ($status == 2) {
+			$data['title'] = 'Sistem Magang DPRD';
+			$data['judul'] = 'Belum Verifikasi';
+			$data['data'] = $this->pendaftaran->getPendaftarByStatus('belum');
+		}
+		$data['pendaftaran'] = $this->db->get_where('pendaftaran', ['email' =>
+		$this->session->userdata('email')])->row_array();
+		$this->load->view('templates/auth_header', $data);
+		$this->load->view('admin/daftar_peserta_status', $data);
 		$this->load->view('dashboard/template/footer');
 	}
 

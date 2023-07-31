@@ -43,20 +43,7 @@
 					<h1 class="h3 mb-4 text-gray-800">
 
 						<?php
-
-
-						if ($judul == '1') {
-							echo "Daftar Peserta Divisi Humas";
-						} else if ($judul == 2) {
-							echo 'Divisi Tata Usaha';
-						} else if ($judul == 3) {
-							echo 'Divisi Perlengkapan';
-						} else if ($judul == 4) {
-							echo 'Divisi Rumah Tangga';
-						} else if ($judul == 5) {
-							echo 'Divisi Persidangan';
-						}
-
+						echo $judul;
 						?>
 
 
@@ -88,24 +75,24 @@
 										</thead>
 										<tbody>
 											<?php $no = 1; ?>
-											<?php foreach ($divisi as $divisi) : ?>
+											<?php foreach ($data as $d) : ?>
 												<tr>
 													<td class="text-center"><?= $no++; ?></td>
-													<td class="text-center"><?= $divisi->nama_peserta; ?></td>
-													<td class="text-center"><?= $divisi->asal_sekolah; ?></td>
+													<td class="text-center"><?= $d['nama_peserta']; ?></td>
+													<td class="text-center"><?= $d['asal_sekolah']; ?></td>
 													<td class="text-center">
 
 														<?php
 
-														if ($divisi->divisi == 1) {
+														if ($d['divisi'] == 1) {
 															echo "Humas";
-														} else if ($divisi->divisi == 2) {
+														} else if ($d['divisi'] == 2) {
 															echo "Tata Usaha";
-														} else if ($divisi->divisi == 3) {
+														} else if ($d['divisi'] == 3) {
 															echo "Perlengkapan";
-														} else if ($divisi->divisi == 4) {
+														} else if ($d['divisi'] == 4) {
 															echo "Rumah Tangga";
-														} else if ($divisi->divisi == 5) {
+														} else if ($d['divisi'] == 5) {
 															echo "Persidangan";
 														}
 
@@ -114,7 +101,7 @@
 													<td class="text-center">
 														<?php
 
-														$tanggal = $divisi->tgl_mulai;
+														$tanggal = $d['tgl_mulai'];
 														$bulan = array(
 															1 =>   'Januari',
 															'Februari',
@@ -135,7 +122,7 @@
 
 														?>
 													</td>
-													<td class="text-center"><a href="<?= base_url('assets/img/' . $divisi->surat_ket) ?>" class="btn btn-primary btn-sm" target="_blank" role="button" aria-pressed="true"><i class="fas fa-download fa-sm"></i> Lihat Surat</a></td>
+													<td class="text-center"><a href="<?= base_url('assets/img/' . $d['surat_ket']) ?>" class="btn btn-primary btn-sm" target="_blank" role="button" aria-pressed="true"><i class="fas fa-download fa-sm"></i> Lihat Surat</a></td>
 
 
 												</tr>
@@ -180,9 +167,6 @@
 						</div>
 					</div>
 				</div>
-
-
-
 
 				<!-- Bootstrap core JavaScript-->
 				<script src="<?= base_url('assets/'); ?>vendor/jquery/jquery.min.js"></script>
