@@ -12,8 +12,6 @@ class SendEmail extends CI_Controller
 		$this->load->library(array('email'));
 
 
-
-
 		// Load library form validation dan helper form
 		$this->load->library('form_validation');
 		$this->load->helper('form');
@@ -104,8 +102,8 @@ class SendEmail extends CI_Controller
 		$mail->isSMTP();  // Mengirim menggunakan protokol SMTP
 		$mail->Host = 'smtp.gmail.com'; // Host dari server SMTP
 		$mail->SMTPAuth = true; // Autentikasi SMTP
-		$mail->Username = 'cisiang8@gmail.com';
-		$mail->Password = 'sheehiukbezndfuw';
+		$mail->Username = 'sarapanapp@gmail.com';
+		$mail->Password = 'rfwrxdjqmfbthrxp';
 		$mail->SMTPSecure = 'tls';
 		$mail->Port = 587;
 		$mail->setFrom('Siang@gmail.com', 'SIANG-DPRD-JATENG'); // Sumber email
