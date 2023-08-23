@@ -7,48 +7,6 @@
     <title>Laporan Nilai Magang</title>
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/js/bootstrap.min.css'); ?>">
     <style>
-        #table {
-            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        #table td,
-        #table th {
-            border: 1px solid #ddd;
-            padding: 8px;
-        }
-
-        #table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        #table tr:hover {
-            background-color: #ddd;
-        }
-
-        #table th {
-            padding-top: 10px;
-            padding-bottom: 10px;
-            text-align: left;
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .lelang {
-            margin-right: 30px;
-        }
-
-
-
-        hr.new4 {
-            border: 1px solid black;
-        }
-
-        .foot p {
-            margin-left: 500px;
-        }
-
         table {
             margin-top: 50px;
             width: 100%;
@@ -111,6 +69,7 @@
         <h4>PEMERINTAH PROVINSI JAWA TENGAH</h4>
         <h4>SEKRETARIAT DPRD</h4>
         <h6>Jl. Pahlawan No. 9 Telepon (024) 8311174 Fax. Semarang
+            <br> <br> <br>
             <hr class="new4">
         </h6>
     </div>
@@ -170,7 +129,7 @@
     <br>
     <br>
     <br>
-    Penyelia
+    Ayu Utaminingtyas
     </div>
 </body>
 
